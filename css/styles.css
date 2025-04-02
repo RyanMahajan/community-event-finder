@@ -1,0 +1,52 @@
+/* Style for the header */
+.header {
+    display: flex;               /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute space between title and button */
+    align-items: center;         /* Vertically center the items */
+}
+
+.header h1 {
+}
+
+.header button {
+    display: flex;               /* Align the image and text horizontally */
+    align-items: center;         /* Vertically center the text and image */
+    background-color: transparent; /* Remove default button background */
+    border: none;                /* Remove button border */
+    cursor: pointer;             /* Add a pointer cursor on hover */
+}
+
+.header button img {
+    width: 24px;                 /* Set the correct size for the image */
+    height: 24px;
+    margin-right: 8px;           /* Space between the image and the text */
+}
+
+.header button:hover {
+    opacity: 0.6;                /* Optional: Add a hover effect */
+}
+
+/* Style for the card */
+.card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 20px;
+}
+
+.card img {
+    width: 100%;                 /* Make sure the image fits within the card */
+    height: auto;                /* Maintain the aspect ratio */
+    border-radius: 4px;          /* Optional: Add rounded corners to the image */
+}
+
+.card h3 {
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+
+
