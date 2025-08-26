@@ -31,6 +31,7 @@ jobs:
       run:
         working-directory: docs
     steps:
+      - run: ls -R
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
