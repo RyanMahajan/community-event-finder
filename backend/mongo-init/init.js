@@ -69,4 +69,4 @@ db.events.insertMany([
   { name: 'SA Orgy', description: '', date: new Date(), members: 'Conner, Alice' }
 ]);
 
-print('✅ Initialized mydb with sample users');
+print('✅ Initialized mydb with sample users and events');
