@@ -16,7 +16,7 @@
 title: Just the Docs
 description: A Jekyll theme for documentation
 baseurl: "/community-event-finder" # the subpath of your site, e.g. /blog
-url: "https://ryanmahajan.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://ryanmahajan.github.io/community-event-finder" # the base hostname & protocol for your site, e.g. http://example.com
 repository: community-event-finder/community-event-finder # for github-metadata
 
 permalink: pretty
