@@ -13,7 +13,7 @@ Our app is designed by Mercer students for Mercer students. To help Mercer Stude
 {: .fs-6 .fw-300 }
 
 [Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
-[View it on GitHub][Just the Docs repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[View it on GitHub][project repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
@@ -97,3 +97,4 @@ Just the Docs is committed to fostering a welcoming community.
 [GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
 [customize]: {% link docs/customization.md %}
 [use the template]: https://github.com/just-the-docs/just-the-docs-template/generate
+[project repo]: https://github.com/RyanMahajan/community-event-finder
