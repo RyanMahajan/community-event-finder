@@ -18,6 +18,7 @@ description: Mercer Community Event Finder
 baseurl: "/community-event-finder" # the subpath of your site, e.g. /blog
 url: "https://ryanmahajan.github.io/community-event-finder" # the base hostname & protocol for your site, e.g. http://example.com
 repository: community-event-finder/community-event-finder # for github-metadata
+color_scheme: dark
 
 permalink: pretty
 
