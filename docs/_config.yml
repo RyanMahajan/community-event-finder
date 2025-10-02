@@ -18,7 +18,6 @@ description: Mercer Community Event Finder
 baseurl: "/community-event-finder" # the subpath of your site, e.g. /blog
 url: "https://ryanmahajan.github.io/community-event-finder" # the base hostname & protocol for your site, e.g. http://example.com
 repository: community-event-finder/community-event-finder # for github-metadata
-color_scheme: dark
 
 permalink: pretty
 
@@ -161,7 +160,7 @@ gh_edit_branch: "main" # the branch that your docs is served from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
 
 # Color scheme currently only supports "dark", "light"/nil (default), or a custom scheme that you define
-color_scheme: nil
+color_scheme: dark
 
 callouts_level: quiet # or loud
 callouts:
