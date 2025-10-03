@@ -1,6 +1,6 @@
 ---
 title: Meeting Notes
-parent: meeting-notes
+parent: Meeting Notes
 ---
 
 # My digh is massive

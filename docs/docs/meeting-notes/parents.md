@@ -1,6 +1,6 @@
 ---
 title: Breadcrumbs
-parent: meeting-notes
+parent: Meeting Notes
 nav_order: 3
 ---
 
