@@ -3,7 +3,7 @@ title: Project Timeline
 layout: default
 ---
 
-''' mermaid
+```mermaid
 
 timeline
     title History of Social Media Platform
@@ -14,4 +14,4 @@ timeline
     2006 : Twitter
 
 
-'''
+```
