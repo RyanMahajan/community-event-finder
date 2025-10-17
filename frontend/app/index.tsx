@@ -14,20 +14,18 @@ export default function Index() {
       }}
     >
   <div className="bg-white rounded-xl shadow-lg overflow-hidden m-4 max-w-md">
-  <Header title={"title"} />
-  <Card imageSource={"/Users/amrabuazizah/community-event-finder/frontend/assets/images/react-logo.png"} caption={"caption"} />
-  <Footer buttons={[
-          {
-            label: "Like",
-            onPress: () => console.log("Liked!"),
-            variant: "primary",
-          },
-          {
-            label: "Share",
-            onPress: () => console.log("Shared!"),
-            variant: "secondary",
-          },
-        ]} />
+
+  <Card 
+      imageUrl="https://example.com/event-poster.jpg"
+      title="Summer Music Festival 2025"
+      description="Join us for an unforgettable evening of live music, food, and entertainment under the stars!"
+      postedBy={{
+        name: "Music Lovers Group",
+        avatar: "https://example.com/avatar.jpg"
+      }}
+      attendeeCount={247}
+      onPress={() => console.log('Card pressed')}
+    />
 </div>
     </View>
   );
