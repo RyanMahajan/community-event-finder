@@ -29,7 +29,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   footer: {
-    
+    backgroundColor: '#cccccc',
+    borderRadius: 20
   }
 
 });
