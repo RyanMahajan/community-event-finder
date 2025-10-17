@@ -5,7 +5,6 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 
 interface CardProps {
@@ -87,7 +86,6 @@ export default function Card({
   );
 }
 
-const screenWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
   card: {
@@ -105,11 +103,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
   },
-  posterImage: {
-    width: '100%',
-    height: screenWidth * (5 / 4), // 4:5 ratio (height = width * 1.25)
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20
+  posterImage: { 
+    width: '100%', 
+    height: 200, 
+    backgroundColor: '#f0f0f0', 
   },
   contentContainer: {
     padding: 16,
