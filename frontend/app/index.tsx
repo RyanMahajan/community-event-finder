@@ -1,6 +1,6 @@
+import React from "react";
 import { Text, View } from "react-native";
 import Card from "../components/card"
-import Header from "../components/header"
 import Footer from "../components/footer"
 
 
@@ -27,6 +27,7 @@ export default function Index() {
       onPress={() => console.log('Card pressed')}
     />
 </div>
+    <Footer/>
     </View>
   );
 }
