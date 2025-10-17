@@ -37,7 +37,7 @@ export default function Card({
       <Image
         source={{ uri: imageUrl }}
         style={styles.posterImage}
-        resizeMode="cover"
+	resizeMode="cover"
       />
 
       {/* Content Container */}
@@ -86,6 +86,7 @@ export default function Card({
   );
 }
 
+
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#ffffff',
@@ -102,11 +103,10 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     marginVertical: 8,
   },
-  posterImage: {
-    width: '100%',
-    height: 200,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 20
+  posterImage: { 
+    width: '100%', 
+    height: 200, 
+    backgroundColor: '#f0f0f0', 
   },
   contentContainer: {
     padding: 16,
