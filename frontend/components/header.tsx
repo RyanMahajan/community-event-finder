@@ -3,7 +3,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-interface FooterProps {
+interface HeaderProps {
   buttons?: Array<{
     label: string
     onPress: () => void
@@ -11,10 +11,10 @@ interface FooterProps {
   }>
 }
 
-export default function Footer({ buttons = [] }: FooterProps) {
+export default function Header({ buttons = [] }: HeaderProps) {
   return (
     <View style={styles.container}>
-      <View style={styles.footer}>
+      <View style={styles.header}>
         <Text>Fuck</Text>
       </View>
     </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     padding: 20,
     margin: 10,
   },
-  footer: {
+  header: {
     backgroundColor: '#cccccc',
     borderRadius: 20
   }
