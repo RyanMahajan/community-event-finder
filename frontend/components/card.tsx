@@ -109,6 +109,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: screenWidth * (5 / 4), // 4:5 ratio (height = width * 1.25)
     backgroundColor: '#f0f0f0',
+    borderRadius: 20
   },
   contentContainer: {
     padding: 16,
