@@ -102,10 +102,11 @@ const styles = StyleSheet.create({
     elevation: 4,
     marginHorizontal: 16,
     marginVertical: 8,
+    maxWidth: 400,
   },
   posterImage: { 
-    width: '100%', 
-    height: 500,
+    maxWidth: 400, 
+    maxHeight: 500,
     aspectRatio: 4 / 5,
     backgroundColor: '#f0f0f0', 
     resizeMode: "cover"
