@@ -35,7 +35,7 @@ export default function Card({
     >
       {/* Event Poster Image */}
       <Image
-        source={{ uri: imageUrl }}
+        source={require('../assets/images/poster1.png')}
         style={styles.posterImage}
 	resizeMode="cover"
       />
@@ -105,8 +105,10 @@ const styles = StyleSheet.create({
   },
   posterImage: { 
     width: '100%', 
-    height: 200, 
+    height: 320,
+    aspectRatio: 4 / 5,
     backgroundColor: '#f0f0f0', 
+    resizeMode: "cover"
   },
   contentContainer: {
     padding: 16,
