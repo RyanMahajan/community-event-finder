@@ -35,7 +35,7 @@ export default function Card({
     >
       {/* Event Poster Image */}
       <Image
-        source={require('../assets/images/poster1.png')}
+        source={imageUrl}
         style={styles.posterImage}
 	resizeMode="cover"
       />
