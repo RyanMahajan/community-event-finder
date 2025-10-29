@@ -2,7 +2,7 @@
 title: Meeting Notes
 ---
 
-# My digh is massive
+# Meeting Notes 
 
 ### These are the meeting notes from our project
 
