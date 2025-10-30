@@ -15,7 +15,7 @@ export default function Header({ buttons = [] }: HeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text>Fuck</Text>
+        <Text>text</Text>
       </View>
     </View>
   );
