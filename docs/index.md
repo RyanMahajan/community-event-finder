@@ -38,7 +38,7 @@ Another Note Intrested in What this looks like.
 
 Some more text and stuff
 
-----
+![Alt Text](../assets/images/large-image.jpg "Title Text")
 
 [^1]: The [source file for this page] uses all three markup languages.
 
