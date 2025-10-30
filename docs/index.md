@@ -17,28 +17,40 @@ Our app is designed by Mercer students for Mercer students. To help Mercer Stude
 
 ---
 
-{: .warning }
-> I think we can delete this.
+Users will be able to scroll through groups using our state of the art algorithems, allowing them to find exactly the event they want to find.
 
-Some Text and Stuff.
+Certified Users will be able to post their own events for other people to join.
+
+{: .note}
+There may be an ability to process payments for tickets
 
 ## Getting started
 
-More Text Stuff
+First users download the app, then they start scrolling!
 
-{: .note }
-Not sure how this works but shold be a note
+If they find an event they like, they can sign up. 
 
-Testing having some seperating text
+{: .note}
+The following only work with an account
 
-{: .note }
-Another Note Intrested in What this looks like.
+If they want to think about it they can save the event to look at later
+Events may be added to a Calender app
+
+
+
+
+
+
 
 ## About the project
 
-Some more text and stuff
+Here is an example event a user might want to create:
 
 ![Alt Text](./assets/images/prototype1.png)
+
+Here is what it would look like in the app:
+
+![Alt Text](./assets/images/Game_Dev-Workshop1Card.png)
 
 [^1]: The [source file for this page] uses all three markup languages.
 
