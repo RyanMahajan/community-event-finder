@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     maxHeight: screenHeight * 0.5,
   },
   blurContainer: {
-    position: 'absolute',
+    padding: 0,
     overflow: 'hidden',
     bottom: screenHeight * 0.02,
     left: screenWidth * 0.04,
