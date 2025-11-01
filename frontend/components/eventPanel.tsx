@@ -32,38 +32,6 @@ export default function EventPanel({
   heatScore,
   onAddEvent,
 }: EventPanelProps) {
-  // Generate heat meter colors based on score
-  const getHeatColor = (score: number) => {
-    if (score < 25) return '#3b82f6'; // Blue
-    if (score < 50) return '#10b981'; // Green
-    if (score < 75) return '#f59e0b'; // Amber
-    return '#ef4444'; // Red
-  };
-
-  const renderHeatMeter = () => {
-    const segments = 5;
-    const filledSegments = Math.ceil((heatScore / 100) * segments);
-
-    return (
-      <View style={styles.heatMeter}>
-        {Array.from({ length: segments }).map((_, index) => (
-          <View
-            key={index}
-            style={[
-              styles.heatSegment,
-              {
-                backgroundColor:
-                  index < filledSegments
-                    ? getHeatColor(heatScore)
-                    : '#e5e7eb',
-              },
-            ]}
-          />
-        ))}
-        <Text style={styles.heatText}>{heatScore}%</Text>
-      </View>
-    );
-  };
 
   return (
     <View style={styles.container}>
@@ -117,13 +85,16 @@ export default function EventPanel({
           onPress={onAddEvent}
           activeOpacity={0.8}
         >
-          <Text style={styles.addButtonText}>+</Text>
+          <Text style={styles.addButtonText}>🔥</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={onAddEvent}
+          activeOpacity={0.8}
+        >
+          <Text style={styles.addButtonText}>👍</Text>
         </TouchableOpacity>
 
-        {/* Heat Meter */}
-        <View style={styles.heatMeterContainer}>
-          {renderHeatMeter()}
-        </View>
       </View>
     </View>
   );
@@ -201,7 +172,7 @@ const styles = StyleSheet.create({
     bottom: screenHeight * 0.15, // Account for footer
     alignItems: 'center',
     paddingHorizontal: screenWidth * 0.04,
-    height: screenHeight * 0.4,
+    height: screenHeight * 0.2,
     width: screenWidth * 0.2,
     justifyContent: 'space-around',
   },
@@ -223,26 +194,5 @@ const styles = StyleSheet.create({
     fontWeight: '300',
     color: '#000',
     lineHeight: screenWidth * 0.1,
-  },
-  heatMeterContainer: {
-    alignItems: 'center',
-  },
-  heatMeter: {
-    alignItems: 'center',
-    gap: screenHeight * 0.015,
-  },
-  heatSegment: {
-    width: screenWidth * 0.08,
-    height: screenHeight * 0.008,
-    borderRadius: screenHeight * 0.004,
-  },
-  heatText: {
-    fontSize: screenWidth * 0.03,
-    fontWeight: '600',
-    color: '#ffffff',
-    marginTop: screenHeight * 0.01,
-    textShadowColor: 'rgba(0, 0, 0, 0.5)',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 2,
   },
 });
