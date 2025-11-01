@@ -28,7 +28,7 @@ interface Event {
 const EVENTS: Event[] = [
   {
     id: '1',
-    imageUrl: require('../assets/images/poster1.png'),
+    imageUrl: require('../assets/images/poster2.png'),
     title: 'Flappy Bird Workshop',
     description:
       'Build your own version of Flappy Bird with the Mercer Game Dev team!',
