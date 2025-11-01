@@ -45,14 +45,14 @@ export default function EventPanel({
       {/* Left Side Content - Overlayed with Blur Background */}
       <View style={styles.leftContent}>
         {/* Blurred background for text readability */}
-        <BlurView intensity={90} style={styles.blurContainer}>
+        <BlurView intensity={30} style={styles.blurContainer}>
           {/* Title */}
-          <Text style={styles.title} numberOfLines={3}>
+          <Text style={styles.title} numberOfLines={2}>
             {title}
           </Text>
 
           {/* Description */}
-          <Text style={styles.description} numberOfLines={4}>
+          <Text style={styles.description} numberOfLines={2}>
             {description}
           </Text>
 
@@ -122,22 +122,26 @@ const styles = StyleSheet.create({
     maxHeight: screenHeight * 0.5,
   },
   blurContainer: {
-    borderRadius: 12,
+    position: 'absolute',
     overflow: 'hidden',
-    padding: screenWidth * 0.04,
+    bottom: screenHeight * 0.02,
+    left: screenWidth * 0.04,
+    width: screenWidth * 0.55,
+    zIndex: 10,
+    borderRadius: 10,
   },
   title: {
-    fontSize: screenWidth * 0.06,
+    fontSize: screenWidth * 0.038,
     fontWeight: '800',
     color: '#ffffff',
-    marginBottom: screenHeight * 0.015,
-    lineHeight: screenWidth * 0.08,
+    marginBottom: screenHeight * 0.006,
+    lineHeight: screenWidth * 0.048,
   },
   description: {
-    fontSize: screenWidth * 0.032,
+    fontSize: screenWidth * 0.026,
     color: '#ffffff',
-    lineHeight: screenWidth * 0.045,
-    marginBottom: screenHeight * 0.02,
+    lineHeight: screenWidth * 0.035,
+    marginBottom: screenHeight * 0.008,
   },
   postedByContainer: {
     flexDirection: 'row',
@@ -157,11 +161,11 @@ const styles = StyleSheet.create({
   },
   avatarText: {
     color: '#ffffff',
-    fontSize: screenWidth * 0.04,
+    fontSize: screenWidth * 0.028,
     fontWeight: '700',
   },
   postedByText: {
-    fontSize: screenWidth * 0.032,
+    fontSize: screenWidth * 0.026,
     color: '#ffffff',
     fontWeight: '600',
     flex: 1,
