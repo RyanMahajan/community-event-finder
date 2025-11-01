@@ -71,7 +71,7 @@ export default function EventPanel({
       <Image
         source={imageUrl}
         style={styles.backgroundImage}
-        resizeMode="cover"
+        resizeMode="contain"
       />
 
       {/* Left Side Content - Overlayed with Blur Background */}
@@ -138,7 +138,6 @@ const styles = StyleSheet.create({
     height: screenHeight,
   },
   backgroundImage: {
-    ...StyleSheet.absoluteFillObject,
     width: '100%',
     height: '100%',
   },
