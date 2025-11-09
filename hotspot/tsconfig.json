@@ -1,7 +1,6 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "jsx": "react",
-    "esModuleInterop": true,
     "strict": true,
     "paths": {
       "@/*": [
@@ -13,8 +12,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts",
-    "components/card2.jsx"
-  ],
-  "extends": "expo/tsconfig.base"
+    "expo-env.d.ts"
+  ]
 }
