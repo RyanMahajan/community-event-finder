@@ -58,5 +58,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         router.push('/(auth)')
     }
 
+    React.useEffect(() => {
+        const { data: authData } = supabase.auth.onAuthStateChange((event, session) => {
+            if (!session) return router.push('/(auth)')
+            getUser(session?.user?.id)
+        })
+        return () => {
+            authData.subscription.unsubscribe()
+        }
+    }, [])
+
     return <AuthContext.Provider value={{ user, signIn, signUp, signOut }}>{children}</AuthContext.Provider>
 }
