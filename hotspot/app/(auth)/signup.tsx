@@ -1,4 +1,4 @@
-import { supabase } from '@/utils/supabase';
+import { useAuth } from '@/providers/AuthProvider';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -9,15 +9,7 @@ export default function () {
   const [username, setUsername] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const handleSignup = async () => {
-    console.log(username, email, password)
-    const { data, error } = await supabase.auth.signUp({
-      email: email,
-      password: password,
-    })
-    console.log(data, error);
-  }
+  const { signUp } = useAuth()
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
@@ -44,7 +36,7 @@ export default function () {
         />
         <TouchableOpacity
           className="bg-black px-4 py-2 rounded-lg"
-          onPress={handleSignup}
+          onPress={() => signUp(username, email, password)}
         >
           <Text className="text-white font-bold text-lg text-center">Signup</Text>
         </TouchableOpacity>

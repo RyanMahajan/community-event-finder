@@ -1,3 +1,4 @@
+import { useAuth } from '@/providers/AuthProvider';
 import { useRouter } from 'expo-router';
 import React from 'react';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
@@ -7,10 +8,7 @@ export default function () {
   const router = useRouter();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
-  const handleLogin = () => {
-    console.log(email, password)
-  }
+  const { signIn } = useAuth()
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
@@ -31,7 +29,7 @@ export default function () {
         />
         <TouchableOpacity
           className="bg-black px-4 py-2 rounded-lg"
-          onPress={handleLogin}
+          onPress={() => signIn(email, password)}
         >
           <Text className="text-white font-bold text-lg text-center">Login</Text>
         </TouchableOpacity>
