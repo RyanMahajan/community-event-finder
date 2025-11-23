@@ -1,7 +1,8 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Tabs } from 'expo-router';
+import { Tabs, useRouter } from 'expo-router';
 
 export default function TabLayout() {
+  const router = useRouter()
   return (
     <Tabs
       screenOptions={{
@@ -23,10 +24,16 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="camera"
+        name="empty"
         options={{
           title: '',
           tabBarIcon: () => <Ionicons style={{width: 70, height: 70}} name="add-circle" size={70} color="black" />
+        }}
+        listeners={{
+          tabPress: (e) => {
+            e.preventDefault()
+            router.push('/camera')
+          }
         }}
       />
       <Tabs.Screen
