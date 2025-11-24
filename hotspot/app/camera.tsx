@@ -79,7 +79,7 @@ export default function () {
       <View className="flex-1 justify-end">
         <View className="flex-row items-center justify-around mb-10">
           <TouchableOpacity className="items-end justify-end" onPress={toggleCameraFacing}>
-            <Ionicons name="camera-reverse" size={50} color="transparent" />
+            <Ionicons name="camera-reverse" size={50} color="rgba(0, 0, 0, 0.01)" />
           </TouchableOpacity>
           { videoUri ? (
             <TouchableOpacity className="items-end justify-end" onPress={saveVideo}>
@@ -91,7 +91,7 @@ export default function () {
             </TouchableOpacity>
           )}
           <TouchableOpacity className="items-end justify-end" onPress={toggleCameraFacing}>
-            <Ionicons name="camera" size={50} color="white" />
+            <Ionicons name="camera-reverse" size={50} color="white" />
           </TouchableOpacity>
         </View>
       </View>
