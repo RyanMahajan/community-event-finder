@@ -2,12 +2,16 @@ import { useAuth } from '@/providers/AuthProvider';
 import { supabase } from '@/utils/supabase';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { CameraType, CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
+import { useVideoPlayer, VideoView } from 'expo-video';
 import React, { useState } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function () {
+  useVideoPlayer()
+  VideoView()
   const [facing, setFacing] = useState<CameraType>('back');
   const [cameraPermission, requestCamPermission] = useCameraPermissions()
   const [micPermission, requestMicPermission] = useMicrophonePermissions();
@@ -74,12 +78,35 @@ export default function () {
     router.back()
   }
 
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library.
+    // Manually request permissions for videos on iOS when `allowsEditing` is set to `false`
+    // and `videoExportPreset` is `'Passthrough'` (the default), ideally before launching the picker
+    // so the app users aren't surprised by a system dialog after picking a video.
+    // See "Invoke permissions for videos" sub section for more details.
+    const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
+
+    if (!permissionResult.granted) {
+      Alert.alert('Permission required', 'Permission to access the media library is required.');
+      return;
+    }
+
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images', 'videos'],
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 0.1,
+    });
+    console.log(result.assets[0].uri);
+    setVideoUri(result.assets[0].uri)
+  };
+
   return (
     <CameraView mode="video" ref={cameraRef} style={{ flex: 1 }} facing={facing}>
       <View className="flex-1 justify-end">
         <View className="flex-row items-center justify-around mb-10">
-          <TouchableOpacity className="items-end justify-end" onPress={toggleCameraFacing}>
-            <Ionicons name="camera-reverse" size={50} color="rgba(0, 0, 0, 0.01)" />
+          <TouchableOpacity className="items-end justify-end" onPress={pickImage}>
+            <Ionicons name="aperture" size={50} color="white" />
           </TouchableOpacity>
           { videoUri ? (
             <TouchableOpacity className="items-end justify-end" onPress={saveVideo}>
