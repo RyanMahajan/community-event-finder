@@ -10,8 +10,6 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function () {
-  useVideoPlayer()
-  VideoView()
   const [facing, setFacing] = useState<CameraType>('back');
   const [cameraPermission, requestCamPermission] = useCameraPermissions()
   const [micPermission, requestMicPermission] = useMicrophonePermissions();
@@ -20,6 +18,8 @@ export default function () {
   const [videoUri, setVideoUri] = useState<string | null>(null)
   const { user } = useAuth()
   const router = useRouter()
+  const [status, setStatus] = useState({ isLoaded: false, isPlaying: false})
+  const videoRef = React.useRef<VideoView>(null); 
 
   if (!cameraPermission?.granted || !micPermission?.granted) {
     // Camera permissions are not granted yet.
@@ -101,28 +101,50 @@ export default function () {
     setVideoUri(result.assets[0].uri)
   };
 
+  const videoSource = videoUri
+
+  const player = useVideoPlayer(videoSource, (player) => {
+    if (player) {
+        player.loop = true
+        player.play()
+    }
+  }) 
+
   return (
-    <CameraView mode="video" ref={cameraRef} style={{ flex: 1 }} facing={facing}>
-      <View className="flex-1 justify-end">
-        <View className="flex-row items-center justify-around mb-10">
-          <TouchableOpacity className="items-end justify-end" onPress={pickImage}>
-            <Ionicons name="aperture" size={50} color="white" />
-          </TouchableOpacity>
-          { videoUri ? (
-            <TouchableOpacity className="items-end justify-end" onPress={saveVideo}>
-              <Ionicons name="checkmark-circle" size={100} color="white" />
-            </TouchableOpacity> 
-          ) : (
-            <TouchableOpacity className="items-end justify-end" onPress={recordVideo}>
-              { !isRecording ? <Ionicons name="radio-button-on" size={100} color="white" /> : <Ionicons name="pause-circle" size={100} color="red" /> }
+    <View className="flex-1">
+        { videoUri ? (
+            <TouchableOpacity className="flex-1" onPress={() => status.isPlaying ? player.pause() : player.play()}>
+                <VideoView
+                    player={player}
+                    ref={videoRef}
+                    allowsFullscreen
+                    allowsPictureInPicture
+                />
             </TouchableOpacity>
-          )}
-          <TouchableOpacity className="items-end justify-end" onPress={toggleCameraFacing}>
-            <Ionicons name="camera-reverse" size={50} color="white" />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </CameraView>
+        ) : (
+            <CameraView mode="video" ref={cameraRef} style={{ flex: 1 }} facing={facing}>
+                <View className="flex-1 justify-end">
+                    <View className="flex-row items-center justify-around mb-10">
+                        <TouchableOpacity className="items-end justify-end" onPress={pickImage}>
+                            <Ionicons name="aperture" size={50} color="white" />
+                        </TouchableOpacity>
+                        { videoUri ? (
+                            <TouchableOpacity className="items-end justify-end" onPress={saveVideo}>
+                                <Ionicons name="checkmark-circle" size={100} color="white" />
+                            </TouchableOpacity> 
+                        ) : (
+                            <TouchableOpacity className="items-end justify-end" onPress={recordVideo}>
+                                { !isRecording ? <Ionicons name="radio-button-on" size={100} color="white" /> : <Ionicons name="pause-circle" size={100} color="red" /> }
+                            </TouchableOpacity>
+                        )}
+                        <TouchableOpacity className="items-end justify-end" onPress={toggleCameraFacing}>
+                            <Ionicons name="camera-reverse" size={50} color="white" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </CameraView>
+        )}
+    </View>
   );
 }
 
