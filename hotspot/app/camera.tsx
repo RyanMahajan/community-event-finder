@@ -1,12 +1,12 @@
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase } from '@/utils/supabase';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { ResizeMode, Video } from 'expo-av';
 import { CameraType, CameraView, useCameraPermissions, useMicrophonePermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
-import { useVideoPlayer, VideoView } from 'expo-video';
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Button, Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function () {
@@ -15,11 +15,11 @@ export default function () {
   const [micPermission, requestMicPermission] = useMicrophonePermissions();
   const [isRecording, setIsRecording] = useState(false)
   const cameraRef = React.useRef<CameraView>(null)
+  const videoRef = React.useRef<Video>(null)
   const [videoUri, setVideoUri] = useState<string | null>(null)
   const { user } = useAuth()
   const router = useRouter()
-  const [status, setStatus] = useState({ isLoaded: false, isPlaying: false})
-  const videoRef = React.useRef<VideoView>(null); 
+  const [status, setStatus] = useState({ isLoaded: false, isPlaying: false })
 
   if (!cameraPermission?.granted || !micPermission?.granted) {
     // Camera permissions are not granted yet.
@@ -101,26 +101,31 @@ export default function () {
     setVideoUri(result.assets[0].uri)
   };
 
-  const videoSource = videoUri
-
-  const player = useVideoPlayer(videoSource, (player) => {
-    if (player) {
-        player.loop = true
-        player.play()
-    }
-  }) 
-
   return (
     <View className="flex-1">
         { videoUri ? (
-            <TouchableOpacity className="flex-1" onPress={() => status.isPlaying ? player.pause() : player.play()}>
-                <VideoView
-                    player={player}
-                    ref={videoRef}
-                    allowsFullscreen
-                    allowsPictureInPicture
+          <View className="flex-1">
+            <TouchableOpacity className="absolute bottom-10 self-center z-10" onPress={saveVideo}>
+              <Ionicons name="checkmark-circle" size={100} color="white" />
+            </TouchableOpacity> 
+            <TouchableOpacity className="flex-1" onPress={() => status.isPlaying ? videoRef.current.pauseAsync() : videoRef.current.playAsync()}>
+                <Video 
+                  ref={videoRef}
+                  style={{
+                    flex: 1,
+                    width: Dimensions.get('window').width,
+                    height: Dimensions.get('window').height
+                  }}
+                  source={{
+                    uri: videoUri
+                  }}
+                  useNativeControls
+                  resizeMode={ResizeMode.COVER}
+                  isLooping
+                  onPlaybackStatusUpdate={status => setStatus(() => status)}
                 />
             </TouchableOpacity>
+          </View>
         ) : (
             <CameraView mode="video" ref={cameraRef} style={{ flex: 1 }} facing={facing}>
                 <View className="flex-1 justify-end">
