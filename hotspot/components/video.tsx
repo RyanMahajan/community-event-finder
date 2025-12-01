@@ -51,7 +51,7 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                         <FontAwesome6 name="fire-flame-curved" size={40} color="white" onPress={() => console.log('like')} />
                     </TouchableOpacity>
                     <TouchableOpacity className="mt-6">
-                        <Ionicons name="chatbubble-ellipses" size={40} color="white" onPress={() => router.push('/comment')} />
+                        <Ionicons name="chatbubble-ellipses" size={40} color="white" onPress={() => router.push(`/comment?video_id=${video.id}`)} />
                     </TouchableOpacity>
                     <TouchableOpacity className="mt-6" onPress={shareVideo}>
                         <FontAwesome name="share" size={36} color="white" />
