@@ -3,7 +3,7 @@ import { useRouter } from 'expo-router'
 import { Text, TouchableOpacity, View } from 'react-native'
 import "../global.css"
 
-export default function Header({ title, color, goBack = false }: { title: string, color: string, goBack?: boolean }) {
+export default function Header({ title, color, goBack = false, search = false }: { title: string, color: string, goBack?: boolean, search?: boolean }) {
     const router = useRouter()
     return (
         <View className="flex-row item-center justify-between">
@@ -16,9 +16,11 @@ export default function Header({ title, color, goBack = false }: { title: string
             </View>
             <Text className={`text-${color} font-bold text-3xl`}>{title}</Text>
             <View className="w-10">
-                <TouchableOpacity onPress={() => console.log('search')}>
-                    <Ionicons name="search" size={28} color={color} />
-                </TouchableOpacity>
+                { search && (
+                    <TouchableOpacity onPress={() => router.push('/search')}>
+                        <Ionicons name="search" size={28} color={color} />
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     )

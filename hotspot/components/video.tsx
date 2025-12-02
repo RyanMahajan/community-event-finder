@@ -1,3 +1,5 @@
+import { useAuth } from '@/providers/AuthProvider';
+import { supabase } from '@/utils/supabase';
 import { FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { ResizeMode, Video } from 'expo-av';
 import { useRouter } from 'expo-router';
@@ -6,6 +8,7 @@ import { Dimensions, Share, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function ({ video, isViewable }: { video: any, isViewable: boolean }) { 
+  const { user, likes, getLikes } = useAuth()
   const videoRef = React.useRef<Video>(null)
   const router = useRouter()
 
@@ -21,6 +24,26 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
     Share.share({
         message: `Check out this video: ${video.title}`
     })
+  }
+
+  const likeVideo = async () => {
+    const { data, error } = await supabase
+      .from('Like')
+      .insert({
+        user_id: user?.id,
+        video_id: video.id,
+        video_user_id: video.User.id
+    })
+    if (!error) getLikes(user?.id)
+  }
+
+  const unlikeVideo = async () => {
+    const { data, error } = await supabase
+      .from('Like')
+      .delete()
+      .eq('user_id', user?.id)
+      .eq('video_id', video.id)
+    if (!error) getLikes(user?.id)
   }
   
   return (
@@ -47,11 +70,17 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                     <TouchableOpacity onPress={() => router.push(`/user?user_id=${video.User.id}`)}>
                         <Ionicons name="person" size={40} color="white" />
                     </TouchableOpacity>
-                    <TouchableOpacity className="mt-6">
-                        <FontAwesome6 name="fire-flame-curved" size={40} color="white" onPress={() => console.log('like')} />
-                    </TouchableOpacity>
-                    <TouchableOpacity className="mt-6">
-                        <Ionicons name="chatbubble-ellipses" size={40} color="white" onPress={() => router.push(`/comment?video_id=${video.id}`)} />
+                    {likes.filter((like: any) => like.video_id === video.id).length > 0 ? (
+                        <TouchableOpacity className="mt-6" onPress={unlikeVideo} >
+                            <FontAwesome6 name="fire-flame-curved" size={40} color="orange" />
+                        </TouchableOpacity> 
+                    ) : (
+                        <TouchableOpacity className="mt-6" onPress={likeVideo} >
+                            <FontAwesome6 name="fire-flame-curved" size={40} color="white" />
+                        </TouchableOpacity> 
+                    )}
+                    <TouchableOpacity className="mt-6" onPress={() => router.push(`/comment?video_id=${video.id}`)}>
+                        <Ionicons name="chatbubble-ellipses" size={40} color="white" />
                     </TouchableOpacity>
                     <TouchableOpacity className="mt-6" onPress={shareVideo}>
                         <FontAwesome name="share" size={36} color="white" />
