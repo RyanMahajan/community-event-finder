@@ -11,6 +11,8 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
   const { user, likes, getLikes, following, getFollowing } = useAuth()
   const videoRef = React.useRef<Video>(null)
   const router = useRouter()
+  // console.log('Video User:', user)
+  // console.log('Video User Likes:', likes)
 
   React.useEffect(() => {
     if (isViewable) {

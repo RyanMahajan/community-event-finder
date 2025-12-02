@@ -34,14 +34,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const getFollowing = async (userId: string) => {
         if (!user) return
 
-        const { data, error } = await supabase.from('Follower').select('*').eq('user_id', userId)
+        const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('user_id', userId)
+        if (error) console.error(error)
         if (!error) setFollowing(data)
     }
 
     const getFollowers = async (userId: string) => {
         if (!user) return
 
-        const { data, error } = await supabase.from('Follower').select('*').eq('follower_user_id', userId)
+        const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('follower_user_id', userId)
+        if (error) console.error(error)
         if (!error) setFollowers(data)
     }
 
@@ -49,6 +51,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const { data, error } = await supabase.from('User').select('*').eq('id', id).single()
         if (error) return console.error(error)
         
+        console.log(data)
         setUser(data)
         getLikes(data.id)
         getFollowing(data.id)

@@ -25,7 +25,7 @@ export default function () {
   }
 
   const getFollowers = async () => {
-    const { data, error } = await supabase.from('Follower').select('*').eq('follower_user_id', params.user_id)
+    const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('follower_user_id', params.user_id)
     if (error) return console.error(error)
     setFollowers(data)
   }

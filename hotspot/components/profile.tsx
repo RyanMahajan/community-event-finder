@@ -6,7 +6,7 @@ import '../global.css';
 export default function ({ user, followers, following } : { user: any, following: any, followers: any }) {
   const { user: authUser, signOut } = useAuth()
   const addProfilePicture = async () => {
-    //const { data, error } = await supaabse.storage.from('profile').upload(user?.id, {
+    //const { data, error } = await supabase.storage.from('profile').upload(user?.id, {
     //  cacheControl: '3600',
     //  upsert: false
     //})
