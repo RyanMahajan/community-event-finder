@@ -8,7 +8,7 @@ import { Dimensions, Share, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function ({ video, isViewable }: { video: any, isViewable: boolean }) { 
-  const { user, likes, getLikes } = useAuth()
+  const { user, likes, getLikes, following, getFollowing } = useAuth()
   const videoRef = React.useRef<Video>(null)
   const router = useRouter()
 
@@ -37,7 +37,7 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
     if (!error) getLikes(user?.id)
   }
 
-  const unlikeVideo = async () => {
+  const unLikeVideo = async () => {
     const { data, error } = await supabase
       .from('Like')
       .delete()
@@ -45,7 +45,26 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
       .eq('video_id', video.id)
     if (!error) getLikes(user?.id)
   }
+
+  const followerUser = async () => {
+    const { error } = await supabase
+      .from('Follower')
+      .insert({
+        user_id: user?.id,
+        follower_user_id: video.User.id
+      })
+    if (!error) getFollowing(user?.id)
+  }
   
+  const unFollowerUser = async () => {
+    const { error } = await supabase
+      .from ('Follower')
+      .delete()
+      .eq('user_id', user?.id)
+      .eq('follower_user_id', video.User.id)
+    if (!error) getFollowing(user?.id)
+  }
+
   return (
     <View>
         <Video
@@ -67,11 +86,22 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                     <Text className="text-white text-xl font-semibold">{video.title}</Text>
                 </View>
                 <View>
-                    <TouchableOpacity onPress={() => router.push(`/user?user_id=${video.User.id}`)}>
+                    <View>
+                      <TouchableOpacity onPress={() => router.push(`/user?user_id=${video.User.id}`)}>
                         <Ionicons name="person" size={40} color="white" />
-                    </TouchableOpacity>
+                      </TouchableOpacity>
+                      {following.filter((following: any) => following.follower_user_id === video.User.id).length > 0 ? (
+                        <TouchableOpacity className="absolute -bottom-1 -right-1 bg-red-500 rounded-full items-center justify-center" onPress={unFollowerUser}>
+                            <Ionicons name="remove" size={21} color="white" />
+                        </TouchableOpacity>
+                      ) : (
+                        <TouchableOpacity className="absolute -bottom-1 -right-1 bg-red-500 rounded-full items-center justify-center" onPress={followerUser}>
+                            <Ionicons name="add" size={21} color="white" />
+                        </TouchableOpacity>
+                      )}
+                    </View>
                     {likes.filter((like: any) => like.video_id === video.id).length > 0 ? (
-                        <TouchableOpacity className="mt-6" onPress={unlikeVideo} >
+                        <TouchableOpacity className="mt-6" onPress={unLikeVideo} >
                             <FontAwesome6 name="fire-flame-curved" size={40} color="orange" />
                         </TouchableOpacity> 
                     ) : (
