@@ -30,8 +30,8 @@ export default function () {
         const { error } = await supabase.from('Comment').insert({
             user_id: user.id,
             video_id: params.video_id,
-            video_user_id: "null",
             text,
+            video_user_id: params.video_user_id,
         })
         if (error) return console.log(error)
         setText('')

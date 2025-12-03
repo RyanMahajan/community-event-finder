@@ -11,8 +11,6 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
   const { user, likes, getLikes, following, getFollowing } = useAuth()
   const videoRef = React.useRef<Video>(null)
   const router = useRouter()
-  // console.log('Video User:', user)
-  // console.log('Video User Likes:', likes)
 
   React.useEffect(() => {
     if (isViewable) {
@@ -111,7 +109,7 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                             <FontAwesome6 name="fire-flame-curved" size={40} color="white" />
                         </TouchableOpacity> 
                     )}
-                    <TouchableOpacity className="mt-6" onPress={() => router.push(`/comment?video_id=${video.id}`)}>
+                    <TouchableOpacity className="mt-6" onPress={() => router.push(`/comment?video_id=${video.id}&video_user_id=${video.User.id}`)}>
                         <Ionicons name="chatbubble-ellipses" size={40} color="white" />
                     </TouchableOpacity>
                     <TouchableOpacity className="mt-6" onPress={shareVideo}>

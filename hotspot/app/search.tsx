@@ -34,7 +34,7 @@ export default function () {
       <FlatList
         data={results}
         renderItem={({ item: user }) =>
-          <TouchableOpacity onPress={() => router.push(`/user?user_id=${user.id}`)} className='flex-row gap-2 items-center w-full m-3'>
+          <TouchableOpacity className='flex-row gap-2 items-center w-full m-3' onPress={() => router.push(`/user?user_id=${user.id}`)}>
             <Image 
               source={{ uri: 'https://placholder.co/40x40' }}
               className="w-10 h-10 rounded-full bg-black"

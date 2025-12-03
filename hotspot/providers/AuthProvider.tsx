@@ -23,27 +23,35 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [likes, setLikes] = React.useState([])
     const [following, setFollowing] = React.useState([])
     const [followers, setFollowers] = React.useState([])
+    const [friends, setFriends] = React.useState([])
+
+    React.useEffect(() => {
+        getFriends()
+    }, [following, followers])
+
+    const getFriends = async () => {
+        const duplicates = following.filter(f => followers.filter(follower => follower.user_id === f.follower_user_id).length > 0)
+        console.log(duplicates)
+    }
 
     const getLikes = async (userId: string) => {
-        if(!user) return
+        if(!userId) return
 
         const { data, error } = await supabase.from('Like').select('*').eq('user_id', userId)
         setLikes(data)
     }
 
     const getFollowing = async (userId: string) => {
-        if (!user) return
+        if (!userId) return
 
-        const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('user_id', userId)
-        if (error) console.error(error)
+        const { data, error } = await supabase.from('Follower').select('*').eq('user_id', userId)
         if (!error) setFollowing(data)
     }
 
     const getFollowers = async (userId: string) => {
-        if (!user) return
+        if (!userId) return
 
         const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('follower_user_id', userId)
-        if (error) console.error(error)
         if (!error) setFollowers(data)
     }
 
@@ -51,7 +59,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const { data, error } = await supabase.from('User').select('*').eq('id', id).single()
         if (error) return console.error(error)
         
-        console.log(data)
         setUser(data)
         getLikes(data.id)
         getFollowing(data.id)
