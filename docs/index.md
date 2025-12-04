@@ -2,7 +2,11 @@
 title: Home
 layout: home
 nav_order: 1
+<<<<<<< HEAD
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
+=======
+description: "Home Page for Mercer Community Event Finder!"
+>>>>>>> meeks_frontend
 permalink: /
 ---
 
@@ -17,6 +21,7 @@ Our app is designed by Mercer students for Mercer students. To help Mercer Stude
 
 ---
 
+<<<<<<< HEAD
 {: .warning }
 > This website documents the features of the current `main` branch of the Just the Docs theme. See nothing for a list of releases, new features, and bug fixes.
 
@@ -77,6 +82,42 @@ Just the Docs is committed to fostering a welcoming community.
 [View our Code of Conduct](https://github.com/just-the-docs/just-the-docs/tree/main/CODE_OF_CONDUCT.md) on our GitHub repository.
 
 ----
+=======
+Users will be able to scroll through groups using our state of the art algorithems, allowing them to find exactly the event they want to find.
+
+Certified Users will be able to post their own events for other people to join.
+
+{: .note}
+There may be an ability to process payments for tickets
+
+## Getting started
+
+First users download the app, then they start scrolling!
+
+If they find an event they like, they can sign up. 
+
+{: .note}
+The following only work with an account
+
+If they want to think about it they can save the event to look at later
+Events may be added to a Calender app
+
+
+
+
+
+
+
+## About the project
+
+Here is an example event a user might want to create:
+
+![Alt Text](./assets/images/prototype1.png)
+
+Here is what it would look like in the app:
+
+![Alt Text](./assets/images/Game_Dev-Workshop1Card.png)
+>>>>>>> meeks_frontend
 
 [^1]: The [source file for this page] uses all three markup languages.
 

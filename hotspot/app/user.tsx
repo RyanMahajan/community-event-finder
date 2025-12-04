@@ -1,0 +1,45 @@
+import Header from '@/components/header';
+import Profile from '@/components/profile';
+import { supabase } from '@/utils/supabase';
+import { useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import '../global.css';
+
+export default function () {
+  const [ user, setUser ] = React.useState(null)
+  const params = useLocalSearchParams()
+  const [ following, setFollowing ] = React.useState([])
+  const [ followers, setFollowers ] = React.useState([])
+
+  const getUser = async () => {
+    const { data, error } = await supabase.from('User').select('*').eq('id', params.user_id).single()
+    if (error) return console.error(error)
+    setUser(data)
+  }
+
+  const getFollowing = async () => {
+    const { data, error } = await supabase.from('Follower').select('*').eq('user_id', params.user_id)
+    if (error) return console.error(error)
+    setFollowing(data)
+  }
+
+  const getFollowers = async () => {
+    const { data, error } = await supabase.from('Follower').select('*, User(*)').eq('follower_user_id', params.user_id)
+    if (error) return console.error(error)
+    setFollowers(data)
+  }
+
+  React.useEffect(() => {
+    getUser()
+    getFollowing()
+    getFollowers()
+  }, [params.user_id])
+
+  return (
+    <SafeAreaView className="flex-1">
+      <Header title={user?.username} color="black" goBack={true} />
+      <Profile user={user} following={following} followers={followers} />
+    </SafeAreaView>
+  );
+}
