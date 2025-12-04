@@ -1,6 +1,7 @@
 import Header from '@/components/header';
 import VideoPlayer from '@/components/video';
 import { supabase } from '@/utils/supabase';
+import { useIsFocused } from '@react-navigation/native';
 import React from 'react';
 import { Dimensions, FlatList, View } from 'react-native';
 import '../../global.css';
@@ -8,6 +9,7 @@ import '../../global.css';
 export default function HomeScreen() {
   const [videos, setVideos] = React.useState<any[]>([])
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
+  const isFocused = useIsFocused()
 
   React.useEffect(() => {
     getVideos()
@@ -44,7 +46,7 @@ export default function HomeScreen() {
         snapToStart
         decelerationRate='fast'
         onViewableItemsChanged={e => setActiveIndex(e.viewableItems[0].key)}
-        renderItem={({ item }) => <VideoPlayer video={item} isViewable={activeIndex === item.id} />} 
+        renderItem={({ item }) => <VideoPlayer video={item} isViewable={activeIndex === item.id && isFocused} />} 
       />
     </View>
   );

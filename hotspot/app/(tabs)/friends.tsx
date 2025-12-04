@@ -3,20 +3,22 @@ import VideoPlayer from '@/components/video';
 import { useAuth } from '@/providers/AuthProvider';
 import { supabase } from '@/utils/supabase';
 import { Ionicons } from '@expo/vector-icons';
+import { useIsFocused } from '@react-navigation/native';
 import React from 'react';
 import { Dimensions, FlatList, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import '../../global.css';
 
+
 export default function HomeScreen() {
   const { friends, following } = useAuth()
   const [videos, setVideos] = React.useState<any[]>([])
   const [activeIndex, setActiveIndex] = React.useState<number | null>(null)
-  console.log(videos)
+  const isFocused = useIsFocused()
 
   React.useEffect(() => {
     getVideos()
-  }, [following])
+  }, [])
 
   const getVideos = async () => {
     const { data, error } = await supabase
@@ -50,7 +52,7 @@ export default function HomeScreen() {
         snapToStart
         decelerationRate='fast'
         onViewableItemsChanged={e => setActiveIndex(e.viewableItems[0].key)}
-        renderItem={({ item }) => <VideoPlayer video={item} isViewable={activeIndex === item.id} />}
+        renderItem={({ item }) => <VideoPlayer video={item} isViewable={activeIndex === item.id && isFocused} />}
         ListEmptyComponent={
           <SafeAreaView className="flex-1 mt-48 items-center justify-center bg-black">
             <Ionicons name='sad' size={20} color='white' />
