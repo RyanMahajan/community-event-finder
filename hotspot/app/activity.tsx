@@ -45,7 +45,7 @@ export default function () {
         renderItem={({ item }) => (
         <View className='flex-row gap-2 m-2'>
             <Image 
-                source={{ uri: 'https://placehold.co/40x40' }} 
+                source={{ uri: `${process.env.EXPO_PUBLIC_BUCKET}/avatars/${item.User?.id}/avatar.jpeg` }} 
                 className="w-12 h-12 rounded-full bg-black" 
             />
             <View>

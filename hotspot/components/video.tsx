@@ -4,7 +4,7 @@ import { FontAwesome, FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { ResizeMode, Video } from 'expo-av';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Dimensions, Share, Text, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, Share, Text, TouchableOpacity, View } from 'react-native';
 import '../global.css';
 
 export default function ({ video, isViewable }: { video: any, isViewable: boolean }) { 
@@ -88,7 +88,10 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                 <View>
                     <View>
                       <TouchableOpacity onPress={() => router.push(`/user?user_id=${video.User.id}`)}>
-                        <Ionicons name="person" size={40} color="white" />
+                        <Image 
+                          source={{ uri: `${process.env.EXPO_PUBLIC_BUCKET}/avatars/${video.User?.id}/avatar.jpeg` }}
+                          className="w-12 h-12 rounded-full bg-black"
+                        />
                       </TouchableOpacity>
                       {following.filter((following: any) => following.follower_user_id === video.User.id).length > 0 ? (
                         <TouchableOpacity className="absolute -bottom-1 -right-1 bg-red-500 rounded-full items-center justify-center" onPress={unFollowerUser}>
@@ -101,11 +104,11 @@ export default function ({ video, isViewable }: { video: any, isViewable: boolea
                       )}
                     </View>
                     {likes.filter((like: any) => like.video_id === video.id).length > 0 ? (
-                        <TouchableOpacity className="mt-6" onPress={unLikeVideo} >
+                        <TouchableOpacity className="mt-6 mx-1" onPress={unLikeVideo} >
                             <FontAwesome6 name="fire-flame-curved" size={40} color="orange" />
                         </TouchableOpacity> 
                     ) : (
-                        <TouchableOpacity className="mt-6" onPress={likeVideo} >
+                        <TouchableOpacity className="mt-6 mx-1" onPress={likeVideo} >
                             <FontAwesome6 name="fire-flame-curved" size={40} color="white" />
                         </TouchableOpacity> 
                     )}

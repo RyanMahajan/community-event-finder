@@ -59,11 +59,11 @@ export default function () {
       <FlatList
         data={users}
         renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => router.push(`/user?user_id=${item.id}`)} className='flex-row gap-2 items-center w-full m-1'>
+          <TouchableOpacity onPress={() => router.push(`/chat?chat_user_id=${item.id}`)} className='flex-row gap-2 items-center w-full m-1'>
             <View className='flex-row justify-between w-full items-center pr-5'>
               <View className='flex-row gap-2'>
                 <Image 
-                  source={{ uri: 'https://placehold.co/40x40' }} 
+                  source={{ uri: `${process.env.EXPO_PUBLIC_BUCKET}/avatars/${item?.id}/avatar.jpeg` }} 
                   className="w-12 h-12 rounded-full bg-black" 
                 />
                 <View>

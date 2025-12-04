@@ -62,7 +62,7 @@ export default function () {
     })
 
     const { data, error } = await supabase.storage
-      .from('videos')
+      .from(`videos/${user?.id}`)
       .upload(fileName, formData, {
         cacheControl: '3600000000',
         upsert: false
@@ -71,7 +71,7 @@ export default function () {
 
     const { error: videoError } = await supabase.from('Video').insert({
       title: "Test title here!",
-      uri: data.path,
+      uri: `${user?.id}/${fileName}`,
       user_id: user?.id
     })
     if (videoError) console.error(videoError)
@@ -97,7 +97,6 @@ export default function () {
       aspect: [4, 3],
       quality: 0.1,
     });
-    console.log(result.assets[0].uri);
     setVideoUri(result.assets[0].uri)
   };
 
