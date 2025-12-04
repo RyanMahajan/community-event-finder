@@ -13,6 +13,8 @@ export const AuthContext = React.createContext({
     getFollowing: async (userId: string) => {},
     followers: [],
     getFollowers: async (userId: string) => {},
+    friends: [],
+    getFriends: async () => {},
 })
 
 export const useAuth = () => React.useContext(AuthContext)
@@ -30,8 +32,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, [following, followers])
 
     const getFriends = async () => {
-        const duplicates = following.filter(f => followers.filter(follower => follower.user_id === f.follower_user_id).length > 0)
+        const followingIds = following.map(f => f.follower_user_id)
+        const followerIds = followers.map(f => f.user_id)
+        const duplicates = followingIds.filter(id => followerIds.includes(id))
         console.log(duplicates)
+        setFriends(duplicates)
     }
 
     const getLikes = async (userId: string) => {
@@ -110,5 +115,5 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         }
     }, [])
 
-    return <AuthContext.Provider value={{ user, signIn, signUp, signOut, likes, getLikes, following, getFollowing, followers, getFollowers }}>{children}</AuthContext.Provider>
+    return <AuthContext.Provider value={{ user, signIn, signUp, signOut, likes, getLikes, following, getFollowing, followers, getFollowers, friends, getFriends }}>{children}</AuthContext.Provider>
 }
