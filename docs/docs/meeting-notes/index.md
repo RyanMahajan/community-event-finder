@@ -12,13 +12,11 @@ Our journey began with **Community Event Finder**, the earliest version of our a
 
 We experimented with **card-based UI components**, exploring color palettes, layout spacing, and general branding. Although simple, this version helped us understand what type of interface would best support an event-focused application.
 
-<div align="center">
 
 ### 📸 Early Design Mockups  
 ![Prototype 1](../assets/images/prototype1.png)  
 ![Workshop Card](../assets/images/Game_Dev-Workshop1Card.png)
 
-</div>
 
 ## ⭐ Version Two — TikTok-Inspired Redesign  
 The second version was presented to **Dr. Allen**, incorporating a modern, scroll-based UI inspired by **TikTok's vertical feed**.  
@@ -38,7 +36,6 @@ For the final iteration of our app, we combined the visual lessons from earlier 
 
 This version represents the culmination of our semester-long progress and reflects a strong balance between **user experience, functionality, and modern web development practices**.
 
-<div align="center">
 
 ### 📸 Early Design Mockups  
 ![Profile](../assets/images/app_profile.png)  
@@ -46,7 +43,6 @@ This version represents the culmination of our semester-long progress and reflec
 ![Home](../assets/images/app_home.png)  
 ![Inbox](../assets/images/app_inbox.png)  
 
-</div>
 
 # Meeting Notes 
 
