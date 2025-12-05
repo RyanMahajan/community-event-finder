@@ -17,8 +17,8 @@ We experimented with **card-based UI components**, exploring color palettes, lay
 <div align="center">
 
 ### 📸 Early Design Mockups  
-![Prototype 1](../../assets/images/prototype1.png)  
-![Workshop Card](../../assets/images/Game_Dev-Workshop1Card.png)
+![Prototype 1](./../../assets/images/prototype1.png)  
+![Workshop Card](./../../assets/images/Game_Dev-Workshop1Card.png)
 
 </div>
 
@@ -47,10 +47,10 @@ This version represents the culmination of our semester-long progress and reflec
 <div align="center">
 
 ### 📸 Early Design Mockups  
-![Profile](../../assets/images/app_profile.png)  
-![Friends](../../assets/images/app_friends.png)  
-![Home](../../assets/images/app_home.png)  
-![Inbox](../../assets/images/app_inbox.png)  
+![Profile](./../../assets/images/app_profile.png)  
+![Friends](./../../assets/images/app_friends.png)  
+![Home](./../../assets/images/app_home.png)  
+![Inbox](./../../assets/images/app_inbox.png)  
 
 </div>
 
