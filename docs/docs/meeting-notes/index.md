@@ -14,8 +14,8 @@ We experimented with **card-based UI components**, exploring color palettes, lay
 
 
 ### 📸 Early Design Mockups  
-![Prototype 1](/assets/images/prototype1.png)  
-![Workshop Card](/assets/images/Game_Dev-Workshop1Card.png)
+![Prototype 1](/community-event-finder/assets/images/prototype1.png)  
+![Workshop Card](/community-event-finder/assets/images/Game_Dev-Workshop1Card.png)
 
 
 ## ⭐ Version Two — TikTok-Inspired Redesign  
@@ -38,10 +38,10 @@ This version represents the culmination of our semester-long progress and reflec
 
 
 ### 📸 Early Design Mockups  
-![Profile](/assets/images/app_profile.png)  
-![Friends](/assets/images/app_friends.png)  
-![Home](/assets/images/app_home.png)  
-![Inbox](/assets/images/app_inbox.png)  
+![Profile](/community-event-finder/assets/images/app_profile.png)  
+![Friends](/community-event-finder/assets/images/app_friends.png)  
+![Home](/community-event-finder/assets/images/app_home.png)  
+![Inbox](/commmunity-event-finder/assets/images/app_inbox.png)  
 
 
 # Meeting Notes 
