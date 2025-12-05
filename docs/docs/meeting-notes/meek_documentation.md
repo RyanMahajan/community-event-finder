@@ -72,7 +72,6 @@ Tutorial: [https://www.youtube.com/watch?v=bxKbv1KZVkI\&list=PLJeCS8DwkVT\_NQpBC
 * Do the same for the rest of the tab icons:  
   * Friends: *people,* Camera: *add-circle*, Inbox: *chatbox-ellipses*, Profile: *person*.  
     * \*\*\*Note: On android instead of wrapping *Ionicons* in the *View* component add this:   
-      `style={{ width: n, height: n }}.`  
 * Add the *focused* property to the *Ionicons* component so that when selected the icon switches to an outline.  
   * Home: *home-outline*, People: *people-outline*, Inbox: *chatbox-ellipses-outline*, Profile: *person-outline*.
 
