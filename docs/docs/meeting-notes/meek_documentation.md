@@ -66,13 +66,13 @@ Tutorial: [https://www.youtube.com/watch?v=bxKbv1KZVkI\&list=PLJeCS8DwkVT\_NQpBC
 
 **3 \- Adding Custom Icons to the Bottom Tab Bar in a TikTok Clone with React Native**
 
-* Expo’s *expo/vector-icons* package contains free to use expo icons [https://icons.expo.fyi/Index](https://icons.expo.fyi/Index)  
+* Expo’s *expo/vector-icons* package contains free to use expo icons: [https://icons.expo.fyi/Index](https://icons.expo.fyi/Index)  
 * Filter the icons on the site by Ionicons.  
 * Search for the *home* icon and click on it to import and render the component in *(tabs)/\_layout.tsx*.  
 * Do the same for the rest of the tab icons:  
   * Friends: *people,* Camera: *add-circle*, Inbox: *chatbox-ellipses*, Profile: *person*.  
     * \*\*\*Note: On android instead of wrapping *Ionicons* in the *View* component add this:   
-      *style={{ width: n, height: n }}.*  
+      `style={{ width: n, height: n }}.`  
 * Add the *focused* property to the *Ionicons* component so that when selected the icon switches to an outline.  
   * Home: *home-outline*, People: *people-outline*, Inbox: *chatbox-ellipses-outline*, Profile: *person-outline*.
 
